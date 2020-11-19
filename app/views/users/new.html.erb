@@ -1,17 +1,27 @@
 <% provide(:title, "Signup") %>
-<div class="container">
-  <div class="form-wrapper-exterior">
+<div class="main-wrapper-exterior">
+  <div class="container">
     <%= form_with(model: @user ) do |f| %>
       <%= render 'shared/error_messages' %>
 
       <div class="form-wrapper-interior">
-        <%= f.label :name %>
-        <%= f.text_field :name, class: "form" %>
-
-        <%= f.label :email %>
-        <%= f.email_field :email, class: "form" %>
-
-        <%= f.submit "送信" %>
+        <ul>
+          <li>
+            <%= f.label :name %>
+          </li>
+          <li>
+            <%= f.text_field :name, class: "form", placeholder: "User Name" %>
+          </li>
+          <li class="form-email-label">
+            <%= f.label :email %>
+          </li>
+          <li>
+            <%= f.email_field :email, class: "form", placeholder: "ex-user@example.com" %>
+          </li>
+          <li >
+            <%= f.submit "submit" , class: "submit"%>
+          </li>
+        </ul>
       </div>
     <% end %>
   </div>

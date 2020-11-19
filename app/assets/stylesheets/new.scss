@@ -1,5 +1,7 @@
-.form-wrapper-exterior {
-    text-align: center;
+.main-wrapper-exterior {
+  text-align: center;
+  background-color: aliceblue;
+  padding: 30px 0;
 }
 
 // .form-wrapper-interior {
@@ -7,6 +9,45 @@
 //     width: 300px;
 // }
 
-.form {
+.form-wrapper-interior {
+  margin: 30px 0;
+}
 
+.error_message {
+    color: red;
+    border: 1px red solid;
+    width: 300px;
+    margin: 0 auto;
+    background-color: rgb(235, 160, 147);
+    border-radius: 5px;
+    padding: 20px 0;
+}
+
+.form {
+  width: 500px;
+  margin: 5px 0;
+  text-align: center;
+  border: 1px solid rgb(175, 175, 175);
+  border-radius: 3px;
+  padding: 4px 0;
+}
+
+.form-email-label {
+    margin-top: 30px;
+}
+
+.submit {
+  width: 80px;
+  margin-top: 30px;
+  border: 1px solid rgb(153, 153, 223);
+  background-color: rgb(122, 122, 223);
+  border-radius: 3px;
+  color: white;
+  box-shadow: 2px 2px 2px rgb(59, 59, 59);
+  padding: 0 100px;
+  text-align: center;
+}
+
+.submit:hover {
+    opacity: 0.8;
 }

@@ -1,2 +1,10 @@
 <% provide(:title, "Users") %>
-<p>ユーザー一覧</p>
+<div class="main-wrapper-exterior">
+  <div class="container">
+    <div class="a">
+      <% @users.each do |user| %>
+        <%= user.name %>
+      <% end %>
+    </div>
+  </div>
+</div>

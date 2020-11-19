@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
     def index
+      @users = User.all
     end
 
     def new
@@ -9,8 +10,10 @@ class UsersController < ApplicationController
     def create
         @user = User.new(users_params)
         if @user.save
+          flash[:success] = "ユーザーを作成しました！"
           redirect_to users_url
         else
+          flash[:danger] = "ーユーザー作成に失敗しました"
           render "new"
         end
     end
