@@ -1,0 +1,29 @@
+.footer-p {
+  float: left;
+  margin-top: 20px;
+}
+
+.footer-ul {
+  font-size: 15px;
+  display: flex;
+  margin-top: 20px;
+  float: right;
+}
+
+.footer-ul li {
+  margin-right: 20px;
+}
+
+.footer {
+  border-top: rgb(228, 228, 228) solid 1px;
+  margin-top: 20px;
+}
+
+.footer-link {
+    text-decoration: none;
+    color: black;
+}
+
+.footer-link:hover {
+    opacity: 0.5;
+}
