@@ -10,21 +10,22 @@ class UsersController < ApplicationController
     def create
         @user = User.new(users_params)
         if @user.save
-          flash[:success] = "ユーザーを作成しました！"
-          redirect_to users_url
+          flash[:success] = "Created your account！"
+          redirect_to user_url(@user)
         else
-          flash[:danger] = "ーユーザー作成に失敗しました"
+          flash.now[:danger] = "falied to create your account…"
           render "new"
         end
     end
 
     def show
+      @user = User.find(params[:id])
     end
 
     private
       
       def users_params
-        params.require(:user).permit(:name, :email)
+        params.require(:user).permit(:name, :email, :password, :password_confirmation)
       end
 
 end
