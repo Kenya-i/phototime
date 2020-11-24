@@ -13,7 +13,9 @@ class UsersSignupTest < ActionDispatch::IntegrationTest
                                         password: "foo",
                                         password_confirmation: "bar" }}
     end
+    assert_not is_logged_in?
     assert_template "users/new"
+    
   end
 
   test "valid signup information" do
@@ -24,6 +26,7 @@ class UsersSignupTest < ActionDispatch::IntegrationTest
                                         password: "kkkkkk",
                                         password_confirmation: "kkkkkk"}}
     end
+    assert is_logged_in?
     follow_redirect!
     assert_template "users/show"
     assert_not flash.empty?

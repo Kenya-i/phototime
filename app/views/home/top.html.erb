@@ -1,7 +1,15 @@
 
   <div class="container">
       <div class="top-link">
-          <%= link_to "いますぐ始める!", "/signup" %>
-          <%= link_to "ログインする",    "#" %>
+      <% if logged_in? %>
+        <div>
+          <% @users.each do |user| %>
+          <%= user.name %>
+          <% end %>
+        </div>
+      <% else %>
+        <%= link_to "いますぐ始める!", signup_path %>
+        <%= link_to "ログインする", login_path %>
+      <% end %>
       </div>
   </div>

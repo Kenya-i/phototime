@@ -1,0 +1,27 @@
+<% provide(:title, "Login") %>
+  <div class="container">
+
+  
+    <%= form_with url: login_path, scope: :session, local: true  do |f| %>
+
+      <div class="form-wrapper-interior">
+        <ul>
+          <li class="form-label">
+            <%= f.label :email, "Email" %>
+          </li>
+          <li>
+            <%= f.email_field :email, class: "form", placeholder: "ex-user@example.com" %>
+          </li>
+          <li class="form-label">
+            <%= f.label :password %>
+          </li>
+          <li>
+            <%= f.password_field :password, class: "form", placeholder: "password" %>
+          </li>
+          <li >
+            <%= f.submit "submit" , class: "submit"%>
+          </li>
+        </ul>
+      </div>
+    <% end %>
+  </div>
