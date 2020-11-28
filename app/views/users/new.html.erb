@@ -6,17 +6,26 @@
       <div class="form-wrapper-interior">
         <ul>
           <li class="form-label">
-            <%= f.label :name, "Name" %>
+            <%= f.label :name, "FullName" %>
           </li>
-          
           <li>
-            <%= f.text_field :name, class: "form", placeholder: "User Name" %>
+            <%= f.text_field :name, class: "form", placeholder: "Full Name" %>
           </li>
+
+
+          <li class="form-label">
+            <%= f.label :username, "UserName" %>
+          </li>
+          <li>
+            <%= f.text_field :username, class: "form", placeholder: "User Name" %>
+          </li>
+
+
           <li class="form-label">
             <%= f.label :email, "Email" %>
           </li>
           <li>
-            <%= f.email_field :email, class: "form", placeholder: "ex-user@example.com" %>
+            <%= f.email_field :email, class: "form", placeholder: "example@example.com" %>
           </li>
           <li class="form-label">
             <%= f.label :password %>
@@ -36,4 +45,7 @@
         </ul>
       </div>
     <% end %>
+    <div class="TermsOfService">
+      <%= link_to "利用規約", "#"%>
+    </div>
   </div>

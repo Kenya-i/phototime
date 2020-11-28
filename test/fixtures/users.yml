@@ -1,4 +1,17 @@
 ishizuka:
-  name: Ishizuka Kenya
+  name: ishizuka Kenya
   email: ishizuka@example.com
   password_digest: <%= User.digest('password')%>
+  username: ishizuka Kenya
+  website:
+  self_introduce:
+  tell_number:
+
+yamada:
+  name: yamada
+  email: yamada@yamada.com
+  password_digest: <%= User.digest('password')%>
+  username: yamadayamada
+  website:
+  self_introduce:
+  tell_number:

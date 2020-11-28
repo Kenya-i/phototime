@@ -1,7 +1,13 @@
 <div class="header-color">
   <div class="container">
     <div class="header">
-      <h1 class="photo" ><%= link_to "PhotoTime", root_path, class: "photo-title" %></h1>
+      <h1 class="photo" >
+        <% if logged_in? %>
+          <%= link_to "PhotoTime", users_path, class: "photo-title" %>
+        <% else %>
+          <%= link_to "PhotoTime", root_path, class: "photo-title" %>
+        <% end %>
+      </h1>
       <ul class="header-right">
         <% if logged_in? %>
           <li>
@@ -10,8 +16,15 @@
           <li>
             <%= button_to "Log out", logout_path, method: :delete , class: "header-link button"%>
           </li>
+          <li>
+            <%= link_to "Edit", edit_user_path(current_user) , class: "header-link"%>
+          </li>
+          
           
         <% else %>
+        <li>
+          <%= link_to "Sign up", signup_path,class: "header-link"%>
+        </li>
         <li>
           <%= link_to "Log in", login_path,class: "header-link"%>
         </li>

@@ -6,3 +6,5 @@ ja:
       user:
         name: 名前
         email: メール
+        password: パスワード
+        username: ユーザーネーム

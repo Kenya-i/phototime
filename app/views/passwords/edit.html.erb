@@ -1,0 +1,36 @@
+<% provide(:title, "Edit Password")%>
+<div class="container">
+    <%= form_with(model: @user, url: "/users/#{@user.id}/password" , local: true) do |f| %>
+        <div class="form-wrapper-interior">
+            <ul>
+
+                <li class="form-label">
+                    <%= f.label :current_password %>
+                </li>
+                <li>
+                    <%= password_field_tag :current_password, nil, class: "form" , placeholder: "Current Password"%>
+                </li>
+
+
+                <li class="form-label">
+                    <%= f.label :password, "New Password" %>
+                </li>
+                <li>
+                    <%= f.password_field :password, class: "form", placeholder: "Password" %>
+                </li>
+
+
+                <li class="form-label">
+                    <%= f.label :password_confirmation, "New Password Confirmation" %>
+                </li>
+                <li>
+                    <%= f.password_field :password_confirmation, class: "form", placeholder: "Password Confirmation"%>
+                </li>
+                <li >
+                    <%= f.submit "submit" , class: "submit"%>
+                </li>
+            </ul>
+        </div>
+    <% end %>
+
+</div>
