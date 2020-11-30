@@ -1,6 +1,13 @@
 class User < ApplicationRecord
     before_save { self.email = email.downcase }
 
+    has_many :posts, dependent: :destroy
+
+    has_secure_password
+
+    # 画像アップロード実装(carrierwave)
+    mount_uploader :image, ImageUploader
+
     validates :name ,    presence: { message: "を入力してください。"},
                          length: { maximum: 50 }
 
@@ -26,7 +33,7 @@ class User < ApplicationRecord
 
     validates :self_introduce, length: { maximum: 300}
 
-    has_secure_password
+    
 
     def User.digest(string)
         cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST : BCrypt::Engine.cost

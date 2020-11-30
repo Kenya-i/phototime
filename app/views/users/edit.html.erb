@@ -1,63 +1,69 @@
 <% provide(:title, "Edit")%>
 <div class="container">
     <%= form_with(model: @user) do |f| %>
-        <div class="form-wrapper-interior">
-        <ul>
-            <li class="form-label">
-                <%= f.label :name, "Name" %>
-            </li>
-            <li>
-                <%= f.text_field :name, class: "form", placeholder: "Name" %>
-            </li>
+        <%= render 'shared/error_messages' %>
+            <div class="form-wrapper-interior">
+                <ul>
+                    <li class="form-label">
+                        <%= f.label :name, "Name" %>
+                    </li>
+                    <li>
+                        <%= f.text_field :name, class: "form", placeholder: "Name" %>
+                    </li>
 
 
-            <li class="form-label">
-                <%= f.label :username, "UserName" %>
-            </li>
-            <li>
-                <%= f.text_field :username, class: "form", placeholder: "UserName"%>
-            </li>
+                    <li class="form-label">
+                        <%= f.label :username, "UserName" %>
+                    </li>
+                    <li>
+                        <%= f.text_field :username, class: "form", placeholder: "UserName"%>
+                    </li>
 
 
-            <li class="form-label">
-                <%= f.label :website, "Website" %>
-            </li>
-            <li>
-                <%= f.text_field :website, class: "form", placeholder: "Website"%>
-            </li>
+                    <li class="form-label">
+                        <%= f.label :website, "Website" %>
+                    </li>
+                    <li>
+                        <%= f.text_field :website, class: "form", placeholder: "Website"%>
+                    </li>
 
 
-            <li class="form-label">
-                <%= f.label :self_introduce, "Self Introduction"%>
-            </li>
-            <li>
-                <%= f.text_area :self_introduce, class: "form", placeholder: "Slef Introduction"%>
-            </li>
+                    <li class="form-label">
+                        <%= f.label :self_introduce, "Self Introduction"%>
+                    </li>
+                    <li>
+                        <%= f.text_area :self_introduce, class: "form", placeholder: "Slef Introduction"%>
+                    </li>
 
 
-            <li class="form-label">
-                <%= f.label :email, "Email"%>
-            </li>
-            <li>
-                <%= f.text_field :email, class: "form", placeholder: "email"%>
-            </li>
+                    <li class="form-label">
+                        <%= f.label :email, "Email"%>
+                    </li>
+                    <li>
+                        <%= f.text_field :email, class: "form", placeholder: "email"%>
+                    </li>
 
 
-            <li class="form-label">
-                <%= f.label :tell_number, "Tell Number"%>
-            </li>
-            <li>
-                <%= f.text_field :tell_number, class: "form", placeholder: "Tell Number"%>
-            </li>
+                    <li class="form-label">
+                        <%= f.label :tell_number, "Tell Number"%>
+                    </li>
+                    <li>
+                        <%= f.text_field :tell_number, class: "form", placeholder: "Tell Number"%>
+                    </li>
 
+                    <li class="form_label">
+                        <%= f.label :image %>
+                    </li>
 
-            
+                    <li>
+                        <%= f.file_field :image %>
+                    </li>
 
-            <li >
-                <%= f.submit "submit" , class: "submit"%>
-            </li>
-        </ul>
-        </div>
+                    <li >
+                        <%= f.submit "submit" , class: "btn btn-primary submit"%>
+                    </li>
+                </ul>
+            </div>
     <% end %>
     <div>
         <%= link_to "パスワード変更", "/users/#{@user.id}/password/edit" %>

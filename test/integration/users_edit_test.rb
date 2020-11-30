@@ -8,7 +8,7 @@ class UsersEditTest < ActionDispatch::IntegrationTest
   end
 
 
-  # ユーザー登録失敗
+  # ユーザー更新失敗
   test "the case where you could NOT update the user's data(NOT successfull)" do
     # log_in_as(@user)
     post login_path(@user), params: { session: { email: "ishizuka@example.com",
@@ -31,7 +31,7 @@ class UsersEditTest < ActionDispatch::IntegrationTest
                                               tell_number:    data_items[:tell_number] }}
     assert_not flash.empty?
     @user.reload
-    assert_template "users/new"
+    assert_template "users/edit"
     get root_path
     assert flash.empty?
   end

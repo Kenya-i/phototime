@@ -1,0 +1,25 @@
+<% provide(:title, "New Post")%>
+<div class="container">
+  <%= form_with model: @post, multipart: true, local: true  do |f| %>
+    <div class="form-wrapper-interior">
+      <ul>
+        <li>
+          <%= f.label :photo %>
+        </li>
+        <li>
+          <%= f.file_field :photo %>
+        </li>
+        <li class="form-label">
+          <%= f.label :content %>
+        </li>
+        <li>
+          <%= f.text_field :content%>
+        </li>
+        <li>
+          <%= f.submit "Submit"%>
+        </li>
+
+      </ul>
+    </div>
+  <% end %>
+</div>

@@ -1,0 +1,20 @@
+iphone:
+  content: "iphone"
+  created_at: <%= 10.minutes.ago %>
+  user: ishizuka
+
+
+mac:
+  content: "mac"
+  created_at: <%= 3.years.ago %>
+  user: ishizuka
+
+oden:
+  content: "oden"
+  created_at: <%= 2.hours.ago %>
+  user: yamada
+
+most_recent:
+  content: "most recent"
+  created_at: <%= Time.zone.now %>
+  user: ishizuka

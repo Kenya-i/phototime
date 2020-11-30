@@ -1,2 +1,22 @@
+<% provide(:title, @user.name)%>
+<div class="container">
+    <div class="icon-wrapper">
+        <div class="user-icon">
+            <div class="user-name">
+                <%= @user.name %>
+            </div>
+            <% if @user.image? %>
+                <%= image_tag @user.image.url, class: "image-size" %>
+            <% end %>
+        </div>
+    </div>
+    <div>
+        <% if logged_in? %>
+            <%= link_to "プロフィールを編集する", edit_user_path(@user)%>
+        <% else %>
+            <%= link_to "#" %>
+        <% end %>
+    </div>
+</div>
 
-<%= @user.name %>
+

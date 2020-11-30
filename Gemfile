@@ -8,6 +8,12 @@ gem 'rails', '~> 6.0.3', '>= 6.0.3.3'
 
 gem 'jquery-rails'
 
+# 画像アップロード
+gem 'carrierwave'
+
+# 画像加工
+gem 'mini_magick'
+
 gem 'rails-controller-testing'
 #ハッシュ化
 gem 'bcrypt'

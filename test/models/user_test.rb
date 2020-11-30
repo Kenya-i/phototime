@@ -143,6 +143,15 @@ class UserTest < ActiveSupport::TestCase
       @user.tell_number = invalid_number
       assert_not @user.valid?
     end
-  end 
+  end
+
+  test "associated posts should be destroyed" do
+    @user.save
+    @user.posts.create!(content: "content")
+    assert_difference 'Post.count', -1 do
+      @user.destroy
+    end
+  end
+
 end
 

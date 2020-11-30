@@ -4,6 +4,7 @@ class UsersController < ApplicationController
 
   def index
     @users = User.all
+    @posts = Post.all
   end
 
   def new
@@ -34,7 +35,7 @@ class UsersController < ApplicationController
       redirect_to root_url
     else
       flash.now[:notice] = "ユーザー情報の更新に失敗しました"
-      render "users/new"
+      render "users/edit"
     end
   end
 
@@ -53,7 +54,9 @@ class UsersController < ApplicationController
   private
     
     def users_params
-      params.require(:user).permit(:name, :email, :password, :password_confirmation, :username, :website, :self_introduce, :tell_number)
+      params.require(:user).permit(:name, :email, :password, :password_confirmation,
+                                   :username, :website, :self_introduce,
+                                   :tell_number, :image)
     end
 
     def logged_in_user

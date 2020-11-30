@@ -19,6 +19,8 @@ Rails.application.routes.draw do
   #   resource :password, except: [:index, :create, :new, :show]
   # end
 
+  resources :posts
+
   get "/users/:id/password/edit", to: "passwords#edit"
   patch "/users/:id/password",  to: "passwords#update"
   delete "/users/:id/password", to: "passwords#destroy"
