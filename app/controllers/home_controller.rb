@@ -1,6 +1,13 @@
 class HomeController < ApplicationController
   def top
-    @users = User.all
+    if logged_in?
+      @post = current_user.posts.build
+      @feed_items = current_user.feed
+    end
+    # @users = User.all 
+    # @posts = Post.all
+    # @followers ||= current_user.following if logged_in?
+    
   end
 
   def about 
@@ -11,4 +18,8 @@ class HomeController < ApplicationController
 
   def contact
   end
+
+  def terms
+  end
+  
 end

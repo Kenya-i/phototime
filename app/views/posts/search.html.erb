@@ -1,0 +1,22 @@
+<% provide(:title, @word) %>
+
+<div class="container">
+    <% @posts.each do |post| %>
+        <div class="row user-border">
+            <div class="col-md-2">
+                <div class="username-limit">
+                    <%= link_to username_limit(post.user.name), post.user %>
+                </div>
+                <%= link_to image_tag(post.user.image.url, class: "column-image" ),post.user  %>
+            </div>
+            <div class="col-md-4">
+                <%= link_to image_tag(post.photo.url), post %>
+            </div>
+            <div class="col-md-6 search-content-wrapper">
+                <div class="search-content">
+                    <%= post.content %>
+                </div>
+            </div>
+        </div>
+    <% end %>
+</div>

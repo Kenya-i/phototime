@@ -1,0 +1,17 @@
+<% provide(:title, @title)%>
+<div class="container">
+    <div class="follow">Following</div>
+    <% if @users.any? %>
+        <div class="row">
+            <% @users.each do |user| %>
+                <div class="col-md-3 follow-row">
+                    <%= link_to user.name, user %>
+                </div>
+                <div class="col-md-2 follow-row">
+                    <%= link_to image_tag(user.image.url, class: "image-size"), user %>
+                </div>
+            <% end %>
+        </div>
+        
+    <% end %>
+</div>

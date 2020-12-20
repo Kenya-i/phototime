@@ -1,13 +1,13 @@
 <% provide(:title, "Edit")%>
 <div class="container">
     <%= form_with(model: @user) do |f| %>
-        <%= render 'shared/error_messages' %>
-            <div class="form-wrapper-interior">
+        <%= render 'shared/@user_error_messages' %>
+            <div class="form-wrapper">
                 <ul>
                     <li class="form-label">
                         <%= f.label :name, "Name" %>
                     </li>
-                    <li>
+                    <li class="form-blank">
                         <%= f.text_field :name, class: "form", placeholder: "Name" %>
                     </li>
 
@@ -15,7 +15,7 @@
                     <li class="form-label">
                         <%= f.label :username, "UserName" %>
                     </li>
-                    <li>
+                    <li class="form-blank">
                         <%= f.text_field :username, class: "form", placeholder: "UserName"%>
                     </li>
 
@@ -23,7 +23,7 @@
                     <li class="form-label">
                         <%= f.label :website, "Website" %>
                     </li>
-                    <li>
+                    <li class="form-blank">
                         <%= f.text_field :website, class: "form", placeholder: "Website"%>
                     </li>
 
@@ -31,7 +31,7 @@
                     <li class="form-label">
                         <%= f.label :self_introduce, "Self Introduction"%>
                     </li>
-                    <li>
+                    <li class="form-blank">
                         <%= f.text_area :self_introduce, class: "form", placeholder: "Slef Introduction"%>
                     </li>
 
@@ -39,7 +39,7 @@
                     <li class="form-label">
                         <%= f.label :email, "Email"%>
                     </li>
-                    <li>
+                    <li class="form-blank">
                         <%= f.text_field :email, class: "form", placeholder: "email"%>
                     </li>
 
@@ -47,15 +47,30 @@
                     <li class="form-label">
                         <%= f.label :tell_number, "Tell Number"%>
                     </li>
-                    <li>
+                    <li class="form-blank">
                         <%= f.text_field :tell_number, class: "form", placeholder: "Tell Number"%>
                     </li>
 
-                    <li class="form_label">
-                        <%= f.label :image %>
+                    <li class="form-label">
+                        <%= f.label :sex, "Sex" %>
+                    </li>
+                    <li class="form-blank">
+                        <span class="radio-button">
+                            <%= f.radio_button :sex, "男" %>male
+                        </span>
+                        <span class="radio-button">
+                            <%= f.radio_button :sex, "女" %>female
+                        </span>
+                        
                     </li>
 
+                    <div class="form-label">Profile Icon</div>
+
                     <li>
+                        <%= f.label :image, "アイコンを選択する", class: "btn-primary image-label fas fa-file-upload" %>
+                    </li>
+
+                    <li class="file-selection">
                         <%= f.file_field :image %>
                     </li>
 
@@ -66,10 +81,11 @@
             </div>
     <% end %>
     <div>
-        <%= link_to "パスワード変更", "/users/#{@user.id}/password/edit" %>
+        <%= link_to "パスワード変更", edit_user_password_path(@user)  %>
     </div>
-    <div>
-        <%= link_to "アカウント削除", "/users/#{@user.id}/password", method: :delete %>
-    </div>
-
+    <% if current_user? @user %>
+        <div>
+            <%= button_to "アカウント削除", user_path(@user), method: :delete, data: {confirm: "本当に削除しますか"} %>
+        </div>
+    <% end %>
 </div>

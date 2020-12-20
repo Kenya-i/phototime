@@ -1,20 +1,37 @@
+<% file_path = Rails.root.join('test', 'fixtures', 'files') %>
+
 iphone:
   content: "iphone"
-  created_at: <%= 10.minutes.ago %>
   user: ishizuka
-
+  created_at: <%= 10.minutes.ago %>
+  photo: <%= Rails.root.join("images/炭治郎.jpg") %>
 
 mac:
   content: "mac"
-  created_at: <%= 3.years.ago %>
   user: ishizuka
+  created_at: <%= 3.years.ago %>
+  photo: <%= file_path.join("images", "炭治郎.jpg") %>
 
 oden:
   content: "oden"
-  created_at: <%= 2.hours.ago %>
   user: yamada
+  created_at: <%= 2.hours.ago %>
+  photo: <%= file_path.join("images", "炭治郎.jpg") %>
 
 most_recent:
   content: "most recent"
-  created_at: <%= Time.zone.now %>
   user: ishizuka
+  created_at: <%= Time.zone.now %>
+  photo: <%= file_path.join("images", "炭治郎.jpg") %>
+
+cup:
+  content: "cup"
+  user: ishizuka
+  created_at: <%= 10.minutes.ago %>
+  photo: <%= file_path.join("images", "炭治郎.jpg") %>
+
+menu:
+  content: "menu"
+  user: matsuda
+  created_at: <%= 10.minutes.ago %>
+  photo: <%= file_path.join("images", "炭治郎.jpg") %>

@@ -1,0 +1,30 @@
+.follow {
+    font-size: 30px;
+    display: left;
+    font-family: Courier, monospace;
+    text-shadow: 1px 1px 2px black;
+    margin: 10px 0;
+}
+
+.following-wrapper {
+    display: flex;
+}
+
+.follow-name {
+
+}
+
+.follow-row {
+    margin: 20px 0;
+    
+}
+
+@media screen and (max-width: 768px) {
+    .follow-row {
+        
+        .image-size {
+            width: 80px;
+            margin: 0 auto;
+        }
+    }
+}

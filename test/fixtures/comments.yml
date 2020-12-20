@@ -1,0 +1,14 @@
+comment_one:
+  content: "コメント1"
+  user_id: 2
+  post_id: 1
+
+comment_two:
+  content: "コメント2"
+  user_id: 1
+  post_id: 2
+
+comment_three:
+  content: "コメント3"
+  user_id: 1
+  post_id: 3

@@ -29,7 +29,7 @@ class UsersEditTest < ActionDispatch::IntegrationTest
                                               website:        data_items[:website],
                                                self_introduce: data_items[:self_introduce],
                                               tell_number:    data_items[:tell_number] }}
-    assert_not flash.empty?
+    assert flash.empty?
     @user.reload
     assert_template "users/edit"
     get root_path
@@ -48,7 +48,7 @@ class UsersEditTest < ActionDispatch::IntegrationTest
     assert_template "users/edit"
     patch user_path(@user), params: { user: { name: @user.name,
                                               email: @user.email,
-                                              username: @user.username,
+                                              username: @user.username
                                                }}
   end
 

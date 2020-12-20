@@ -7,24 +7,80 @@
 
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no">
     <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Stencil+Text&family=Dancing+Script:wght@500&family=Oswald:wght@500&family=Abril+Fatface&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Stencil+Text&family=Dancing+Script:wght@500&family=Oswald:wght@500&family=Abril+Fatface&family=Anton&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
+
+
+    <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <script type="text/javascript">
+    
+      $(function(){
+        
+          $(".header-right2").hide();
+          $(".fa-window-close").hide();
+        $(".bars-icon").click(function(){//メニューボタンをクリックしたとき
+          $(".header-right2").toggle(300);//0.3秒で表示したり非表示にしたりする
+          $(".fa-window-close").show();
+          $(".bars-icon").hide();
+          });
+      });
+
+      $(function() {
+        $(".fa-window-close").click(function() {
+          $(".fa-window-close").hide();
+          $(".header-right2").hide(300);
+          $(".bars-icon").show();
+          });
+
+      });
+
+
+      $(function() {
+        let i = 0;
+        let speed = 1500;
+        let times = 7000;
+        const strJpg = [
+            '/ハワイ.jpg',
+            '/星空.jpg',
+            '/常夏.jpg',
+            '/中尊寺.jpg'
+          ];
+    
+        let fadeout = function() {
+          $('#fadeout-image').fadeOut(speed, function() {
+              $('#fadeout-image').css("background-image", "url('"+strJpg[i]+"')");
+              $('#fadeout-image').fadeIn(speed);
+            } );
+            if (i == (strJpg.length - 1)) i = -1;
+            i++;
+          };
+
+
+          setInterval(fadeout, times)
+      });
+
+    </script>
+
     
   </head>
 
   <body>
     <%= render 'shared/header' %>
-    <div class="main-wrapper-exterior">
-      
-      <div class="image">
+    <div class="main-wrapper">
       <% flash.each do |key,message|%>
-        <div class="flash">
-          <%= message %>
-        </div>
+          <div class="flash-<%="#{key}"%>">
+            <%= message %>
+          </div>
       <% end %>
-        <%= yield %>
-      </div>
+      <!-- jquery機能はパーシャルにしてhome関連のviewにだけ表示 -->
+      <!-- 5日くらい詰まってたけど解決。パーシャルの便利さを痛感。-->
+      <%= yield %>
     </div>
+
+    <% %>
+
     <%= render 'shared/footer' %>
     <%= debug(params) if Rails.env.development? %>
   </body>

@@ -1,6 +1,7 @@
 ENV['RAILS_ENV'] ||= 'test'
 require_relative '../config/environment'
 require 'rails/test_help'
+# require 'carrierwave_helper'
 
 class ActiveSupport::TestCase
   # Run tests in parallel with specified workers
@@ -21,6 +22,11 @@ class ActiveSupport::TestCase
   # ログインするという実際の行動を再現
   # debugger
   def log_in_as(user)
-    session[:user_id] = user.id
+    # debugger
+    # post login_path, params: { session: { email: user.email, password: user.password}}
+    # session[:user_id] = user.id
   end
+  # debugger
+
+
 end

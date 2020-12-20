@@ -6,14 +6,29 @@ class UserTest < ActiveSupport::TestCase
   # end
 
   def setup
-    @user = User.new(name: "Ex User",            email: "exuser@example.com",
-                     password: "password",       password_confirmation: "password",
-                     username: "Kenya",          website: "https://website-example.com",
-                     self_introduce: "a" * 300 , tell_number: "080-1234-5678"   )
+    # @user = User.new(name: "Ex User",            email: "exuser@example.com",
+    #                  password: "password",       password_confirmation: "password",
+    #                  username: "Kenya",          website: "https://website-example.com",
+    #                  self_introduce: "a" * 300 , tell_number: "080-1234-5678"   )
+    @user = users(:ishizuka)
+    # ↓ユーザーが削除されたら投稿も削除されるかどうかの確認用
+    @sample_user = User.new(name: "sample user", email: "sample@user.com",
+                            password: "password", password_confirmation: "password")
+    @other_user = users(:yamada)
   end
+
+  # test "user2" do
+  #   assert @user2.valid?
+  # end
+
+  # test "user2 image" do
+  #   @user2.image = nil
+  #   assert @user2.valid?
+  # end
 
   # ユーザー自体の保存の可否
   test "should be valid" do
+    @user = users(:ishizuka)
     assert @user.valid?
   end
 
@@ -145,13 +160,54 @@ class UserTest < ActiveSupport::TestCase
     end
   end
 
+  # ユーザー画像は無くても良い
+  test "image doesn't always have to be attached " do
+    @user.image = nil
+    # debugger
+    assert @user.valid?
+  end
+
+  # ユーザーが削除された時投稿も削除される
   test "associated posts should be destroyed" do
-    @user.save
-    @user.posts.create!(content: "content")
+    @sample_user.save
+    extend ActionDispatch::TestProcess
+    file = fixture_file_upload('files/images/アイコン.jpg', 'image/jpeg')
+    @sample_user.posts.create!(content: "sample user!", photo: file)
     assert_difference 'Post.count', -1 do
-      @user.destroy
+      @sample_user.destroy
     end
   end
+
+  test "should follow and unfollow a user" do
+    ishizuka = users(:ishizuka)
+    yamada = users(:yamada)
+    assert_not ishizuka.following?(yamada)
+    ishizuka.follow(yamada)
+    assert ishizuka.following?(yamada)
+    assert yamada.followers.include?(ishizuka)
+    ishizuka.unfollow(yamada)
+    assert_not ishizuka.following?(yamada)
+  end
+
+  test "feed should have the right posts" do
+    ishizuka = users(:ishizuka)
+    yamada   = users(:yamada)
+    matsuda    = users(:matsuda)
+    # フォローしているユーザーの投稿を確認
+    matsuda.posts.each do |post_following|
+      assert ishizuka.feed.include?(post_following)
+    end
+    # 自分自身の投稿を確認
+    ishizuka.posts.each do |post_self|
+      assert ishizuka.feed.include?(post_self)
+    end
+    # フォローしていないユーザーの投稿を確認
+    yamada.posts.each do |post_unfollowed|
+      assert_not ishizuka.feed.include?(post_unfollowed)
+    end
+  end
+
+
 
 end
 

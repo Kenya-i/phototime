@@ -1,0 +1,11 @@
+<%= provide(:title, "notifications") %>
+<div class="container">
+    <% notifications = @notifications.where.not(visitor_id: current_user.id) %>
+    <% if notifications.exists? %>
+        <div class="notifications-wrapper">
+            <%= render notifications %>
+        </div>
+    <% else %>
+        <p>通知はありません</p>
+    <% end %>
+</div>

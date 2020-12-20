@@ -1,0 +1,11 @@
+one:
+  follower: ishizuka #ishizuka
+  followed: matsuda #matsuda
+
+two:
+  follower: yamada #yamada
+  followed: ishizuka #ishizuka
+
+
+
+

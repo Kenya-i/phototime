@@ -6,6 +6,8 @@ ruby '2.7.2'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 6.0.3', '>= 6.0.3.3'
 
+gem 'bootstrap-sass'
+
 gem 'jquery-rails'
 
 # 画像アップロード
@@ -13,6 +15,18 @@ gem 'carrierwave'
 
 # 画像加工
 gem 'mini_magick'
+
+# ユーザー
+gem 'faker'
+
+# content-typeの判定
+gem 'ruby-filemagic'
+
+gem 'devise'
+gem 'omniauth'
+gem 'omniauth-google-oauth2'
+gem 'omniauth-facebook'
+gem 'dotenv-rails'
 
 gem 'rails-controller-testing'
 #ハッシュ化

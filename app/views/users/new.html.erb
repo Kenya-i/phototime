@@ -1,9 +1,10 @@
 <% provide(:title, "Signup") %>
+<%= render 'shared/jquery_with_login' %>
   <div class="container">
     <%= form_with(model: @user ) do |f| %>
-      <%= render 'shared/error_messages' %>
+      <%= render 'shared/@user_error_messages' %>
 
-      <div class="form-wrapper-interior">
+      <div class="form-wrapper form-wrapper-center">
         <ul>
           <li class="form-label">
             <%= f.label :name, "FullName" %>
@@ -27,12 +28,14 @@
           <li>
             <%= f.email_field :email, class: "form", placeholder: "example@example.com" %>
           </li>
+
           <li class="form-label">
-            <%= f.label :password %>
+            <%= f.label :password, "Password" %>
           </li>
           <li>
             <%= f.password_field :password, class: "form", placeholder: "password" %>
           </li>
+
           <li class="form-label">
             <%= f.label :password_confirmation %>
           </li>
@@ -40,12 +43,13 @@
             <%= f.password_field :password_confirmation, class: "form", placeholder: "password" %>
           </li>
           <li >
-            <%= f.submit "submit" , class: "submit"%>
+
+            <%= f.submit "submit" , class: "submit btn"%>
           </li>
         </ul>
       </div>
     <% end %>
-    <div class="TermsOfService">
-      <%= link_to "利用規約", "#"%>
+    <div class="terms">
+      <%= link_to "利用規約", terms_path %>
     </div>
   </div>

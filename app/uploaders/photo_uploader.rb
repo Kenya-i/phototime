@@ -3,6 +3,10 @@ class PhotoUploader < CarrierWave::Uploader::Base
   # include CarrierWave::RMagick
   include CarrierWave::MiniMagick
 
+  def size_range
+    1..5.megabytes
+  end
+
   # Choose what kind of storage to use for this uploader:
   storage :file
   # storage :fog
@@ -39,7 +43,7 @@ class PhotoUploader < CarrierWave::Uploader::Base
   # Add a white list of extensions which are allowed to be uploaded.
   # For images you might use something like this:
   def extension_whitelist
-    %w(jpeg png)
+    %w(jpeg jpg png)
   end
 
   # Override the filename of the uploaded files:

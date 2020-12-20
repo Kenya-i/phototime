@@ -1,7 +1,8 @@
 <% provide(:title, "Edit Password")%>
 <div class="container">
-    <%= form_with(model: @user, url: "/users/#{@user.id}/password" , local: true) do |f| %>
-        <div class="form-wrapper-interior">
+    <%= form_with(model: @user, url: user_password_path(@user), local: true, method: :patch) do |f| %> <!-- "/users/#{@user.id}/password" --> 
+      <%= render 'shared/@user_error_messages' %> 
+        <div class="form-wrapper">
             <ul>
 
                 <li class="form-label">

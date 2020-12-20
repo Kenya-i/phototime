@@ -4,11 +4,13 @@
       <p>User</p>
       <% @users.each do |user| %>
         <div class="user">
-          <%= link_to user.name, user %>
+          <%= link_to user.username, user %>
         </div>
         <div>
           <% if user.image? %>
             <%= link_to image_tag(user.image.url, class: "image-size"), user %>
+          <% else %>
+            <%= link_to image_tag("アイコン.jpg", class: "image-size"), user %>
           <% end %>
         </div>
       <% end %>

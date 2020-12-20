@@ -1,38 +1,94 @@
-<div class="header-color">
+<div class="header-background">
   <div class="container">
     <div class="header">
       <h1 class="photo" >
         <% if logged_in? %>
-          <%= link_to "PhotoTime", users_path, class: "photo-title" %>
+          <%= link_to "PhotoTime", root_path , class: "photo-title" %>
         <% else %>
           <%= link_to "PhotoTime", root_path, class: "photo-title" %>
         <% end %>
       </h1>
-      <ul class="header-right">
-        <% if logged_in? %>
-          <li>
-            <%= link_to "Profile", current_user, class: "header-link"%>
-          </li>
-          <li>
-            <%= link_to "Post", new_post_path, class: "header-link"%>
-          </li>
-          <li>
-            <%= button_to "Log out", logout_path, method: :delete , class: "header-link button"%>
-          </li>
-          <li>
-            <%= link_to "Edit", edit_user_path(current_user) , class: "header-link"%>
-          </li>
+      
+      
+        <ul class="header-right1">
+          <% if logged_in? %>
+            <li>
+              <%= link_to "Profile", current_user , class: "header-link" %>
+            </li>
+            <li>
+              <%= link_to "Post", new_post_path, class: "header-link" %>
+            </li>
+            <li>
+              <% if unchecked_notifications.any? %>
+                <%= link_to "Notice", notifications_path, class: "unchecked" %>
+              <% else %>
+                <%= link_to "Notice", notifications_path, class: "header-link" %>
+              <% end %>
+            </li>
+            <li>
+              <%= button_to "Log out", logout_path, method: :delete , class: "header-link button"%>
+            </li>
+            <li>
+              <%= form_with url: search_path, method: :get, class: "serach-form", local: true do |f| %>
+                <%= text_field_tag :search, nil, class: "search-field" %><%= f.submit 'Search', class: "search-text" %>
+              <% end %>
+            </li>
+          <% else %>
+            <li>
+              <%= link_to "Sign up", signup_path,class: "header-link"%>
+            </li>
+            <li>
+              <%= link_to "Log in", login_path,class: "header-link"%>
+            </li>
+            <li>
+              <%= form_with url: search_path, method: :get, class: "serach-form", local: true do |f| %>
+                <%= text_field_tag :search, nil, class: "search-field" %><%= f.submit 'Search', class: "search-text" %>
+              <% end %>
+            </li>
+          <% end %>
+        </ul>
+
+        <i class="fas fa-bars bars-icon"></i>
+        <ul class="header-right2">
           
-          
-        <% else %>
-        <li>
-          <%= link_to "Sign up", signup_path,class: "header-link"%>
-        </li>
-        <li>
-          <%= link_to "Log in", login_path,class: "header-link"%>
-        </li>
-        <% end %>
-      </ul>
+            <% if logged_in? %>
+              <li>
+                <%= link_to "Profile", current_user , class: "header-link" %>
+              </li>
+              <li>
+                <%= link_to "Post", new_post_path, class: "header-link" %>
+              </li>
+              <li>
+                <% if unchecked_notifications.any? %>
+                  <%= link_to "Notice", notifications_path, class: "unchecked" %>
+                <% else %>
+                  <%= link_to "Notice", notifications_path, class: "header-link" %>
+                <% end %>
+              </li>
+              <li>
+                <%= button_to "Log out", logout_path, method: :delete , class: "header-link button"%>
+              </li>
+              <li>
+                <%= form_with url: search_path, method: :get, class: "serach-form", local: true do |f| %>
+                  <%= text_field_tag :search, nil, class: "search-field" %><%= f.submit 'Search', class: "search-text" %>
+                <% end %>
+              </li>
+            <% else %>
+              <li>
+                <%= link_to "Sign up", signup_path,class: "header-link"%>
+              </li>
+              <li>
+                <%= link_to "Log in", login_path,class: "header-link"%>
+              </li>
+              <li>
+                <%= form_with url: search_path, method: :get, class: "serach-form", local: true do |f| %>
+                  <%= text_field_tag :search, nil, class: "search-field" %><%= f.submit 'Search', class: "search-text" %>
+                <% end %>
+              </li>
+            <% end %>
+        </ul>
+        
+        <i class="far fa-window-close"></i>
     </div>
   </div>
 </div>

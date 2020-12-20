@@ -1,0 +1,152 @@
+// Place all the styles related to the Users controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+
+// show.html.erb
+@import "variables";
+
+.icon-wrapper {
+  display: flex;
+  margin-bottom: 30px;
+}
+
+  .user-icon {
+    text-align: left;
+    padding-top: 30px;
+    width: 50%;
+  }
+  
+  .user-name {
+    text-align: center;
+    
+    font-family: Courier, monospace;
+    font-size: 18px;
+  }
+
+  .self-introduce-wrapper {
+    padding: 10px;
+    background-color: rgb(241, 241, 241);
+    border-radius: 10px;
+    margin: 30px 0px;
+  }
+
+  .image-size-profile-page {
+    margin: 10px auto;
+  }
+
+  .user-profile-edit {
+    text-align: center;
+    padding-top: 20px;
+  }
+
+
+  .user-post-text {
+    background-color: rgb(248, 248, 248);
+    width: 80%;
+    margin: 0 auto;
+    font-size: 20px;
+    padding: 20px 10px;
+    border-radius: 10px;
+    border: solid 1px gray;
+  }
+
+  .follow_button {
+    padding: 30px 20px 20px 20px;
+    width: 50%;
+  }
+
+  .posts-count {
+    margin: 10px 0;
+  }
+
+  .user-wrapper {
+    display: flex;
+    width: 100%;
+  }
+
+  .btn-width {
+    width: 100%;
+    outline: none;
+    border: none;
+    margin: 20px 0;
+  }
+
+  .stats a {
+    display: inline-block;
+  }
+
+  #follow_form {
+    padding-top: 20px;
+  }
+
+
+  .user-post-image {
+    margin-bottom: 20px
+  }
+
+  // new.html.erb
+
+  .form-wrapper-center {
+    @include form-position;
+  }
+
+  .row-image {
+    margin-bottom: 30px;
+    width: 200px;
+  }
+
+  .row-image-wrapper {
+    margin: 0 auto;
+  }
+
+  .radio-button {
+    margin: 40px;
+    font-family: Courier, monospace;
+    color: gray;
+    font-size: 20px;
+  }
+
+ 
+
+
+// レスポンシ部対応スマホ
+@media screen and (max-width: 480px) {
+  /* 480px以下に適用されるCSS（スマホ用） */
+  .col-xs-4 a img {
+    width: 90px;
+  }
+
+  .user-profile-edit  {
+    padding-top: 0px;
+    a {
+      font-size: 10px;
+    }
+  }
+
+  .image-size-profile-page {
+    width: 70px;
+    margin-top: 10px;
+  }
+
+  .follow_button {
+
+  }
+
+  .user-wrapper {
+    margin: 0 auto;
+  }
+
+  .posts-count {
+    font-size: 12px;
+  }
+
+  .btn-width {
+    font-size: 10px;
+    padding: 5px;
+  }
+
+  .stats a{
+    font-size: 12px;
+  }
+
+}

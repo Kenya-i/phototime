@@ -9,10 +9,10 @@ class SessionsController < ApplicationController
     if @user&.authenticate(params[:session][:password]) 
       log_in @user
       # session[:user_id] = @user.id
-      flash[:notice] = "ログインしました！"
+      flash[:success] = "logged in successfully！"
       redirect_to @user
     else
-      flash.now[:notice] = "メールアドレスかパスワードが無効です"
+      flash.now[:danger] = "メールアドレスかパスワードが無効です"
       render "new"
     end
   end
@@ -21,4 +21,11 @@ class SessionsController < ApplicationController
     log_out
     redirect_to root_url
   end
+
+  
 end
+
+
+
+
+

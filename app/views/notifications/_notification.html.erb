@@ -1,0 +1,30 @@
+<% visitor = notification.visitor %>
+<% visited = notification.visited %>
+
+
+<div class="notifications-table row">
+    <div class="notification-icon-wrapper col-md-2">
+        <div class="notification-name">
+            <%= link_to username_limit(visitor.username), user_path(visitor) %>
+        </div>
+        <div class="notification-icon" >
+            <%= link_to image_tag(visitor.image.url, class: "image-size-small"), user_path(visitor) %>
+        </div>
+    </div>
+    <div class="each-notification-comment col-md-10">
+    
+    
+        <% if notification.action == 'follow' %>
+            <%= "あなたをフォローしました" %>
+        <% elsif notification.action == "like" %>
+            <%= link_to "あなたの投稿", notification.post %><%= "にいいねしました" %>
+        <% else notification.action == "comment" %>
+            <div class="comment-notification">
+                <%= link_to "あなたの投稿", notification.post %><%= "にコメントしました" %>
+            </div>
+            <div class="notification-comment-content">
+                <%= text_limit(notification.comment.content) %>
+            </div>
+        <% end %>
+    </div>
+</div>

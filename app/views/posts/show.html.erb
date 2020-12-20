@@ -1,2 +1,43 @@
-<%= image_tag @post.photo.url %>
-<%= @post.content %>
+<% provide(:title, characters_limit(@post))%>
+<div class="container">
+  <div class="each-image">
+    <% if @post && @post.photo? %>
+      <%= image_tag @post.photo.url, class: "user-post-image" %>
+      <div class="user-post-text">
+        <%= @post.content %>
+      </div>
+      <%= render 'like_form' %>
+      <%= "#{@post.likes.count}いいね" %><i class="fas fa-thumbs-up"></i>
+    <% else %>
+      <div>投稿が見つかりません</div>
+    <% end %>
+  </div>
+  
+  <% if logged_in? %>
+    <div class="post-form-wrapper">
+      <%= form_with model: [@post, @comment], local: true  do |f| %>
+        <%= f.text_area :content %>
+        <%= f.submit "コメントを残す" %>
+      <% end %>
+    </div>
+  <% end %>
+
+　<div class="comment-wrapper">
+    <% @comments.each do |comment| %>
+      <div class="each-comment-wrapper">
+        <div class="comment-icon">
+          <div class="comment-icon-username">
+            <%= comment.user.name %>
+          </div>
+          <%= link_to image_tag(comment.user.image.url, class: "image-size-small"), comment.user %>
+        </div>
+        <div class="comment-content">
+          <%= comment.content %>
+        </div>
+        <% if comment.user == current_user  %>
+          <%= button_to "delete", post_comments_path(comment), { method: :delete, data: { confirm: '削除しますか？' } } %>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+</div>

@@ -1,13 +1,19 @@
+<% file_path = Rails.root.join('test/fixtures/files') %>
+
+
 ishizuka:
+  id: 1
   name: ishizuka Kenya
   email: ishizuka@example.com
   password_digest: <%= User.digest('password')%>
   username: ishizuka Kenya
-  website:
-  self_introduce:
-  tell_number:
+  website: https://website-example.com
+  self_introduce: aaaaaaaaaaaa
+  tell_number: 080-1234-5678
+  image: <%= file_path.join('images/炭治郎.jpg') %>
 
 yamada:
+  id: 2
   name: yamada
   email: yamada@yamada.com
   password_digest: <%= User.digest('password')%>
@@ -15,3 +21,15 @@ yamada:
   website:
   self_introduce:
   tell_number:
+  image: <%= file_path.join('炭治郎.jpg') %>
+
+matsuda:
+  id: 3
+  name: matsuda
+  email: matsuda@matsuda.com
+  password_digest: <%= User.digest('password') %>
+  username: matsudamatsuda
+  website:
+  self_introduce:
+  tell_number:
+  image: <%= file_path.join('炭治郎.jpg') %>

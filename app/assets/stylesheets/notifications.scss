@@ -1,0 +1,98 @@
+// Place all the styles related to the notifications controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+
+.notifications-wrapper {
+    margin-top: 50px;
+}
+
+.notifications-table {
+    text-align: left;
+    border-bottom: 1px solid gray;
+    display: flex;
+    height: 150px;
+}
+
+.notification-name {
+    text-align: center;
+    margin: 10px 0;
+}
+
+.notification-icon-wrapper {
+    width: 20%;
+}
+
+.notification-icon {
+
+}
+
+.comment-notification {
+    line-height: 60px;
+    width: 100%;
+}
+
+.notification-comment-content {
+    line-height: 20px;
+    background-color: rgb(248, 248, 248);
+    color: rgb(134, 134, 134);
+    border-radius: 10px;
+    padding: 5px 10px;
+    width: 100%;
+    font-size: 12px;
+}
+
+.notification-comments {
+    text-align: center;
+}
+
+
+.each-notification-comment {
+    line-height: 149px;
+    width: 100%;
+}
+
+@media screen and (max-width: 768px) {
+    .notification-name a {
+        font-size: 10px;
+    }
+
+    .comment-notification {
+        font-size: 10px;
+    }
+
+    .each-notification-comment {
+        font-size: 10px;
+        margin: 0 10px;
+    }
+
+    .notification-comment-content {
+        font-size: 10px;
+        padding: 5px;
+        line-height: 12px;
+    }
+    
+}
+
+@media screen and (max-width: 480px) {
+    .notification-name a {
+        font-size: 10px;
+    }
+
+    .notification-icon a img {
+        width: 40px;
+    }
+
+    .comment-notification {
+        line-height: 30px;
+    }
+
+    .notification-icon-wrapper {
+        font-size: 5px;
+        width: 25%
+    }
+    .notification-comment-content {
+        font-size: 10px;
+        line-height: 10px;
+        padding: 0px;
+    }
+}

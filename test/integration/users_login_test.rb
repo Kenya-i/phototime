@@ -14,6 +14,7 @@ class UsersLoginTest < ActionDispatch::IntegrationTest
     assert_template "sessions/new"
     post login_path, params: { session: { email: "", 
                                           password: "" }}
+    assert !is_logged_in?
     assert_template "sessions/new"
     assert_not is_logged_in?
     assert_not flash.empty?
@@ -84,4 +85,15 @@ class UsersLoginTest < ActionDispatch::IntegrationTest
     assert_select "form[action=?]", logout_path, count: 0
     assert_select "a[href=?]", user_path(@user), count: 0
   end
+
+
+
+  # test "couldn't log in when have already logged in" do
+  #   post login_path, params: { session: { email: @user.email,
+  #                                         password: "password"}}
+  #   assert is_logged_in?
+  #   get login_path
+  #   assert_template 'users/show'
+  # end
+
 end

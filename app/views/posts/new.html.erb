@@ -1,22 +1,24 @@
 <% provide(:title, "New Post")%>
 <div class="container">
   <%= form_with model: @post, multipart: true, local: true  do |f| %>
-    <div class="form-wrapper-interior">
+    <%= render 'shared/@post_error_messages' %>
+    <div class="form-wrapper">
       <ul>
+        <div class="form-label">photo</div>
         <li>
-          <%= f.label :photo %>
+          <%= f.label :photo, "画像を選択する", class: "btn-primary image-label fas fa-file-upload" %>
         </li>
-        <li>
+        <li class="file-selection">
           <%= f.file_field :photo %>
         </li>
         <li class="form-label">
           <%= f.label :content %>
         </li>
         <li>
-          <%= f.text_field :content%>
+          <%= f.text_area :content%>
         </li>
         <li>
-          <%= f.submit "Submit"%>
+          <%= f.submit "Submit", class: "submit"%>
         </li>
 
       </ul>

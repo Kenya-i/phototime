@@ -23,5 +23,7 @@ module SessionsHelper
         user && user == current_user
     end
 
+    
+
 
 end

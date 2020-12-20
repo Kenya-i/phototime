@@ -1,0 +1,5 @@
+<%= form_with(model: current_user.likes.build ,url: post_likes_url(@post), local: true, method: :post) do |f| %>
+    <div><%= hidden_field_tag :post_id, @post.id %></div>
+    <%= f.submit "いいね", class: "btn btn-width btn-danger" %>
+<% end %>
+
