@@ -39,7 +39,7 @@ class UsersLoginTest < ActionDispatch::IntegrationTest
     # 直後のテンプレートではflashは存在し、次のページ移動でflashが消える
     assert_template "users/show" # ここでflashが表示されている
     assert_not flash.empty? #"users/edit"をまだ表示中なのでflashが存在する。
-    assert_select "a[href=?]", users_path
+    assert_select "a[href=?]", root_path
     assert_select "a[href=?]", user_path(@user)
     assert_select "form[action=?]", logout_path
     assert_select "a[href=?]", edit_user_path
@@ -71,7 +71,7 @@ class UsersLoginTest < ActionDispatch::IntegrationTest
     assert_redirected_to @user
     follow_redirect!
     assert_template "users/show"
-    assert_select "a[href=?]", users_path
+    assert_select "a[href=?]", root_path
     assert_select "a[href=?]", user_path(@user)
     assert_select "form[action=?]", logout_path
     assert_select "a[href=?]", edit_user_path

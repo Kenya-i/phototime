@@ -24,13 +24,13 @@ class UsesProfileTest < ActionDispatch::IntegrationTest
     assert_template 'users/show'
     assert_select 'title', full_title(@user.name)
     assert_select '.user-name', text: @user.name
-    assert_select '.user-icon>img', count: 1
-    assert_select '.user-icon>img[src=?]','/assets/アイコン-1f66430508e2bf6ea7f0c209bb56c03b10829ebacb7663946ea564c53dcef7ce.jpg'
+    assert_select '.user-icon>.user-name>img', count: 1
+    assert_select '.user-icon>.user-name>img[src=?]','/assets/アイコン-1f66430508e2bf6ea7f0c209bb56c03b10829ebacb7663946ea564c53dcef7ce.jpg'
     assert_match @user.posts.count.to_s, response.body
-    assert_select '.icon-wrapper>.user-self-introduce', text: @user.self_introduce
+    assert_select '.self-introduce-wrapper', text: @user.self_introduce
     assert_select '.user-profile-edit>a', text: "プロフィールを編集する"
     assert_select '.user-profile-edit>a[href=?]', edit_user_path(@user), count: 1
-    assert_select '.user-profile-edit>div', text: "#{@user.posts.count}件の投稿"
+    assert_select '.posts-count', text: "#{@user.posts.count}件の投稿"
     # プロフィール画像変更後、プロフィールページの画面表示を確認
     get edit_user_path(@user)
     assert_template 'users/edit'
@@ -84,8 +84,8 @@ class UsesProfileTest < ActionDispatch::IntegrationTest
     assert_template 'users/show'
     assert_select 'title', full_title(@user.name)
     assert_select '.user-name', text: @user.name
-    assert_select '.user-icon>img', count: 1
-    assert_select '.user-icon>img[src=?]', "/uploads/user/image/1/%E6%98%9F%E7%A9%BA.jpg" # 星空に変更されている
+    assert_select '.user-icon>.user-name>img', count: 1
+    assert_select '.user-icon>.user-name>img[src=?]', "/uploads/user/image/1/%E6%98%9F%E7%A9%BA.jpg" # 星空に変更されている
   end
 
   # ログインして他人のプロフィールページに行った時の画面表示
@@ -99,14 +99,14 @@ class UsesProfileTest < ActionDispatch::IntegrationTest
     assert_template 'users/show' #@userのプロフィール画面
     get user_path(@other_user)
     assert_select 'title', full_title(@other_user.name)
-    assert_select '.user-name', text: @other_user.name
-    assert_select '.user-icon>img', count: 1
-    assert_select '.user-icon>img[src=?]','/assets/アイコン-1f66430508e2bf6ea7f0c209bb56c03b10829ebacb7663946ea564c53dcef7ce.jpg'
+    assert_select '.user-name', text: @other_user.username
+    assert_select '.user-icon>.user-name>img', count: 1
+    assert_select '.user-icon>.user-name>img[src=?]','/assets/アイコン-1f66430508e2bf6ea7f0c209bb56c03b10829ebacb7663946ea564c53dcef7ce.jpg'
     assert_match @other_user.posts.count.to_s, response.body
-    assert_select '.icon-wrapper>.user-self-introduce', text: @other_user.self_introduce
+    assert_select '.self-introduce-wrapper', text: @other_user.self_introduce
     assert_select '.user-profile-edit>a', text: "プロフィールを編集する", count: 0
     assert_select '.user-profile-edit>a[href=?]', edit_user_path(@user), count: 0
-    assert_select '.user-profile-edit>div', text: "#{@other_user.posts.count}件の投稿"
+    assert_select '.posts-count', text: "#{@other_user.posts.count}件の投稿"
   end
 
   # ログインせずにプロフィールページに行く

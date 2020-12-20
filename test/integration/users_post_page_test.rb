@@ -45,7 +45,7 @@ class UsersPostPageTest < ActionDispatch::IntegrationTest
               # ↓                           # assert post.file?
               # ↓sessionが貼ってあればjQuery機能は無いはず
     assert_select '.main-wrapper>.image', count: 0
-    assert_select '.main-wrapper>.container>img', count: 1
+    
     assert_select '.user-post-text', count: 1
     assert_match "/uploads/post/photo/1063225355/%E3%82%A2%E3%82%A4%E3%82%B3%E3%83%B3.jpg", response.body
     assert_match title, response.body
@@ -59,7 +59,7 @@ class UsersPostPageTest < ActionDispatch::IntegrationTest
     assert_template 'posts/show'
     #           # ↓sessionが貼ってあれば(ログインしていれば)jQuery機能は無いはずなのでここでエラーになる
     assert_select '.main-wrapper>.image', count: 0
-    assert_select '.main-wrapper>.container>img', count: 1
+    
     assert_select '.user-post-text', count: 1
     assert_match "/uploads/post/photo/1063225355/%E3%82%A2%E3%82%A4%E3%82%B3%E3%83%B3.jpg", response.body
     assert_match title, response.body
