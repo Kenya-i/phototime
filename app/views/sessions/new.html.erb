@@ -1,10 +1,7 @@
 <% provide(:title, "Login") %>
 <%= render 'shared/jquery_with_login' %>
 <div class="container">
-
-
   <%= form_with url: login_path, scope: :session, local: true  do |f| %>
-
     <div class="form-wrapper form-wrapper-center">
       <ul>
         <li class="form-label">

@@ -1,14 +1,24 @@
-// Place all the styles related to the Users controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: https://sass-lang.com/
-
 // show.html.erb
 @import "variables";
 
-.icon-wrapper {
-  display: flex;
-  margin-bottom: 30px;
-}
+  .users {
+    font-size: 18px;
+    width: 200px;
+    margin-top: 50px;
+  }
+
+  .user {
+    text-align: left;
+    width: 300px;
+    margin: 0 auto;
+    border-bottom: 1px solid gray;
+    width: 100%;
+  }
+
+  .icon-wrapper {
+    display: flex;
+    margin-bottom: 30px;
+  }
 
   .user-icon {
     text-align: left;
@@ -18,7 +28,6 @@
   
   .user-name {
     text-align: center;
-    
     font-family: Courier, monospace;
     font-size: 18px;
   }
@@ -106,7 +115,11 @@
     font-size: 20px;
   }
 
- 
+  .account-delete {
+    border: none;
+    background-color: white;
+    color: rgb(3, 116, 190);
+  }
 
 
 // レスポンシ部対応スマホ
@@ -115,38 +128,33 @@
   .col-xs-4 a img {
     width: 90px;
   }
-
   .user-profile-edit  {
     padding-top: 0px;
     a {
       font-size: 10px;
     }
   }
-
   .image-size-profile-page {
     width: 70px;
     margin-top: 10px;
   }
-
-  .follow_button {
-
-  }
-
   .user-wrapper {
     margin: 0 auto;
   }
-
   .posts-count {
     font-size: 12px;
   }
-
   .btn-width {
     font-size: 10px;
     padding: 5px;
   }
-
   .stats a{
     font-size: 12px;
+  }
+
+  .radio-button {
+    font-size: 15px;
+    margin: 15px;
   }
 
 }

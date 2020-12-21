@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
-  before_action :logged_in_user, only: [:index, :edit, :update, :destroy, :following, :followers]
-  before_action :correct_user, only: [:edit, :update, :destroy]
+  before_action :logged_in_user, only: [:index, :edit, :update,
+                                        :destroy, :following, :followers]
+  before_action :correct_user, only:   [:edit, :update, :destroy]
   before_action :correct_user_with_follow_function, only: [:following, :followers]
 
   def index
@@ -13,10 +14,8 @@ class UsersController < ApplicationController
   end
 
   def show
-    # debugger
-    @user = User.find(params[:id])
+    @user = User.find_by(id: params[:id])
     @posts = @user.posts
-    # debugger
   end
 
   def create
@@ -44,8 +43,6 @@ class UsersController < ApplicationController
       render "users/edit"
     end
   end
-
-  
   
   def destroy
     @user = User.find_by(id: params[:id])
@@ -59,19 +56,17 @@ class UsersController < ApplicationController
   end
 
 
-  def following
-    @title = "Following"
-    @user = User.find(params[:id])
-    @users = @user.following
-    render 'relationships/following'
-  end
+  # def following
+  #   @user = User.find_by(id: params[:id])
+  #   @users = @user.following
+  #   render 'relationships/following'
+  # end
 
-  def followers
-    @title = "Followers"
-    @user = User.find(params[:id])
-    @users = @user.followers
-    render "relationships/followers"
-  end
+  # def followers
+  #   @user = User.find(params[:id])
+  #   @users = @user.followers
+  #   render "relationships/followers"
+  # end
 
   
 
@@ -82,7 +77,6 @@ class UsersController < ApplicationController
                                    :username, :website, :self_introduce,
                                    :tell_number, :image, :sex)
     end
-
 
     def correct_user
       @user = User.find(params[:id])

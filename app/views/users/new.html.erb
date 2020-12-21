@@ -1,55 +1,47 @@
 <% provide(:title, "Signup") %>
 <%= render 'shared/jquery_with_login' %>
-  <div class="container">
-    <%= form_with(model: @user ) do |f| %>
-      <%= render 'shared/@user_error_messages' %>
-
-      <div class="form-wrapper form-wrapper-center">
-        <ul>
-          <li class="form-label">
-            <%= f.label :name, "FullName" %>
-          </li>
-          <li>
-            <%= f.text_field :name, class: "form", placeholder: "Full Name" %>
-          </li>
-
-
-          <li class="form-label">
-            <%= f.label :username, "UserName" %>
-          </li>
-          <li>
-            <%= f.text_field :username, class: "form", placeholder: "User Name" %>
-          </li>
-
-
-          <li class="form-label">
-            <%= f.label :email, "Email" %>
-          </li>
-          <li>
-            <%= f.email_field :email, class: "form", placeholder: "example@example.com" %>
-          </li>
-
-          <li class="form-label">
-            <%= f.label :password, "Password" %>
-          </li>
-          <li>
-            <%= f.password_field :password, class: "form", placeholder: "password" %>
-          </li>
-
-          <li class="form-label">
-            <%= f.label :password_confirmation %>
-          </li>
-          <li>
-            <%= f.password_field :password_confirmation, class: "form", placeholder: "password" %>
-          </li>
-          <li >
-
-            <%= f.submit "submit" , class: "submit btn"%>
-          </li>
-        </ul>
-      </div>
-    <% end %>
-    <div class="terms">
-      <%= link_to "利用規約", terms_path %>
+<div class="container">
+  <%= form_with(model: @user) do |f| %>
+    <%= render 'shared/@user_error_messages' %>
+    <div class="form-wrapper form-wrapper-center">
+      <ul>
+        <li class="form-label">
+          <%= f.label :name, "FullName" %>
+        </li>
+        <li>
+          <%= f.text_field :name, class: "form", placeholder: "Full Name" %>
+        </li>
+        <li class="form-label">
+          <%= f.label :username, "UserName" %>
+        </li>
+        <li>
+          <%= f.text_field :username, class: "form", placeholder: "User Name" %>
+        </li>
+        <li class="form-label">
+          <%= f.label :email, "Email" %>
+        </li>
+        <li>
+          <%= f.email_field :email, class: "form", placeholder: "example@example.com" %>
+        </li>
+        <li class="form-label">
+          <%= f.label :password, "Password" %>
+        </li>
+        <li>
+          <%= f.password_field :password, class: "form", placeholder: "password" %>
+        </li>
+        <li class="form-label">
+          <%= f.label :password_confirmation %>
+        </li>
+        <li>
+          <%= f.password_field :password_confirmation, class: "form", placeholder: "password" %>
+        </li>
+        <li >
+          <%= f.submit "submit" , class: "submit btn"%>
+        </li>
+      </ul>
     </div>
+  <% end %>
+  <div class="terms">
+    <%= link_to "利用規約", terms_path %>
   </div>
+</div>

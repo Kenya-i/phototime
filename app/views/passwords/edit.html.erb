@@ -4,23 +4,18 @@
       <%= render 'shared/@user_error_messages' %> 
         <div class="form-wrapper">
             <ul>
-
                 <li class="form-label">
                     <%= f.label :current_password %>
                 </li>
                 <li>
                     <%= password_field_tag :current_password, nil, class: "form" , placeholder: "Current Password"%>
                 </li>
-
-
                 <li class="form-label">
                     <%= f.label :password, "New Password" %>
                 </li>
                 <li>
                     <%= f.password_field :password, class: "form", placeholder: "Password" %>
                 </li>
-
-
                 <li class="form-label">
                     <%= f.label :password_confirmation, "New Password Confirmation" %>
                 </li>
@@ -33,5 +28,4 @@
             </ul>
         </div>
     <% end %>
-
 </div>

@@ -12,7 +12,6 @@
       <div>投稿が見つかりません</div>
     <% end %>
   </div>
-  
   <% if logged_in? %>
     <div class="post-form-wrapper">
       <%= form_with model: [@post, @comment], local: true  do |f| %>
@@ -21,7 +20,7 @@
       <% end %>
     </div>
   <% end %>
-
+  
 　<div class="comment-wrapper">
     <% @comments.each do |comment| %>
       <div class="each-comment-wrapper">

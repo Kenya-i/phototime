@@ -1,15 +1,9 @@
-// Place all the styles related to the home controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: https://sass-lang.com/
-
 // top.html.erb
-
 .find-user {
     margin-top: 35px;
     font-size: 25px;
     float: flex;
     text-decoration: none;
-    
     a &:active {
         text-decoration: none;
     }
@@ -36,28 +30,23 @@
 }
 
 .feed-main-content {
-    display: flex; /* 子要素をflexboxで揃える */
-    flex-direction: column; /* 子要素をflexboxにより縦方向に揃える */
-    justify-content: center; /* 子要素をflexboxにより中央に配置する */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
     align-items: center;
 }
 
 .feed-content {
     background-color: rgb(247, 247, 247);
     margin: 30px;
-    
 }
 
-
-
 .feed-image {
-
     .image-size-middle {
         width: 100px;
         border-radius: 50%;
         float: left;
         border: 2px solid rgb(189, 189, 189);
-        
     }
 }
 
@@ -72,7 +61,6 @@
         text-decoration: none;
         margin-left: 30px;
     }
-    
 }
 
 
@@ -92,7 +80,6 @@
         height: 700px;
     }
 }
-
 
 .top-button {
     position: absolute;
@@ -133,7 +120,6 @@
     font-weight: bold;
     padding: 12px 24px;
     border-radius: 4px;
-    // background-image: linear-gradient(-90deg,  #003366, #60e72a);
     background-image: linear-gradient(-90deg,  #003366, #42c3ff);
     transition: .5s;
     background-size: 200%;
@@ -162,7 +148,7 @@
          0px -5px 4px #003366; 
 }
 
-@media screen and (max-width: 480px) {
+@media screen and (max-width: 768px) {
     .feed-image {
         a {
             margin: 0;
@@ -172,6 +158,33 @@
             width: 70px;
             margin: 15px 0;
         }
+    }
+
+    .top-link .btn-gradation {
+        width: 80%;
+        padding: 15px 15px;
+    }
+
+    .top-text {
+        font-size: 55px;
+    }
+    .top-link .btn-gradation {
+        width: 60%;
+        font-size: 16px;
+        padding: 20px 0;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .top-button {
+        width: 100%;
+    }
+    .top-text {
+        font-size: 45px;
+    }
+    .top-link .btn-gradation {
+        width: 60%;
+        font-size: 15px;
     }
 }
 

@@ -13,7 +13,6 @@ class UsersPostPageTest < ActionDispatch::IntegrationTest
     # ↓ログインして画像を投稿だけしてその後ログアウト↓
     post login_path, params: { session: { email: @user.email,
                                                  password: 'password' }}
-    
     assert_not flash.empty?
     assert is_logged_in?
     follow_redirect!
@@ -37,7 +36,6 @@ class UsersPostPageTest < ActionDispatch::IntegrationTest
       post posts_path, params: { post: {content: title,
                                           photo: file } }                                
     end
-    
     assert_redirected_to post_url(@user.posts[0]) # @user.posts[0].id
     follow_redirect!
     assert_template 'posts/show'
@@ -45,21 +43,18 @@ class UsersPostPageTest < ActionDispatch::IntegrationTest
               # ↓                           # assert post.file?
               # ↓sessionが貼ってあればjQuery機能は無いはず
     assert_select '.main-wrapper>.image', count: 0
-    
     assert_select '.user-post-text', count: 1
     assert_match "/uploads/post/photo/1063225355/%E3%82%A2%E3%82%A4%E3%82%B3%E3%83%B3.jpg", response.body
     assert_match title, response.body
     delete logout_path(@user)
     assert !is_logged_in?
     # ↑ここまで(ログアウト)
-
     # ログインせずに投稿を見に行く
     get post_path(@user.posts[0])
     assert !is_logged_in?
     assert_template 'posts/show'
     #           # ↓sessionが貼ってあれば(ログインしていれば)jQuery機能は無いはずなのでここでエラーになる
     assert_select '.main-wrapper>.image', count: 0
-    
     assert_select '.user-post-text', count: 1
     assert_match "/uploads/post/photo/1063225355/%E3%82%A2%E3%82%A4%E3%82%B3%E3%83%B3.jpg", response.body
     assert_match title, response.body

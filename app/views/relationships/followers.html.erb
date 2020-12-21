@@ -1,4 +1,4 @@
-<% provide(:title, @title)%>
+<% provide(:title, "Followers")%>
 <div class="container">
     <div class="follow">Followers</div>
     <% if @users.any? %>
@@ -12,6 +12,7 @@
                 </div>
             <% end %>
         </div>
-        
+    <% else %>
+        <div>ユーザーはいません</div>
     <% end %>
 </div>

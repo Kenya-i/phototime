@@ -1,5 +1,4 @@
 class CommentsController < ApplicationController
-    # before_action :correct_user, only: [:destroy]
 
     def create
         @post = Post.find(params[:post_id])
@@ -18,13 +17,12 @@ class CommentsController < ApplicationController
 
     def destroy
         @comment = Comment.find_by(id: params[:post_id])
-        
         if @comment && @comment.destroy
             @post = @comment.post
             flash[:success] = "Deleted your comment successfully!"
             redirect_to post_url(@post)
         else 
-            render "home/top" #すでに削除されている場合
+            render "home/top"
         end
 
     end
@@ -34,14 +32,4 @@ class CommentsController < ApplicationController
         def comment_params
             params.require(:comment).permit(:content)
         end
-
-
-        # def correct_user
-        #     user_id = User.find_by(id: params[:id])
-            
-        #     @comment_post_id = Comment.find_by(id: params[:post_id])
-        #     if user_id != current_user
-        #         redirect_to root_path
-        #     end
-        # end
 end

@@ -10,18 +10,13 @@
     display: flex;
 }
 
-.follow-name {
-
-}
 
 .follow-row {
-    margin: 20px 0;
-    
+    margin: 20px 0;  
 }
 
 @media screen and (max-width: 768px) {
     .follow-row {
-        
         .image-size {
             width: 80px;
             margin: 0 auto;

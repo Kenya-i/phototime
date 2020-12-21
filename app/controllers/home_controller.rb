@@ -4,10 +4,6 @@ class HomeController < ApplicationController
       @post = current_user.posts.build
       @feed_items = current_user.feed
     end
-    # @users = User.all 
-    # @posts = Post.all
-    # @followers ||= current_user.following if logged_in?
-    
   end
 
   def about 

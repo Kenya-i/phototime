@@ -1,49 +1,44 @@
 <% provide(:title, @user.name)%>
-    <div class="container">
-        <div class="user-wrapper row">
-            <div class="user-icon col-xs-6">
-                <div class="user-name">
-                    <%= @user.username %>
-                    <% if @user.image? %>
-                        <%= image_tag @user.image.url, class: "image-size image-size-profile-page" %>
-                    <% else %>
-                        <%= image_tag "アイコン.jpg", class: "image-size image-size-profile-page" %>
-                    <% end %>
-                </div>
-                
-                <div class="user-profile-edit">
-                    <%if logged_in? %>
-                        <% if current_user?(@user) %>
-                            <%= link_to "プロフィールを編集する", edit_user_path(@user) %>
-                        <% end %>
-                    <% end %>
-                </div>
+<div class="container">
+    <div class="user-wrapper row">
+        <div class="user-icon col-xs-6">
+            <div class="user-name">
+                <%= @user.username %>
+                <% if @user.image? %>
+                    <%= image_tag @user.image.url, class: "image-size image-size-profile-page" %>
+                <% else %>
+                    <%= image_tag "アイコン.jpg", class: "image-size image-size-profile-page" %>
+                <% end %>
             </div>
-            
-            <div class="follow_button col-xs-6">
-                <div class="posts-count" >
-                    <%= "#{@posts.count}件の投稿" %>
-                </div>
-                <%= render 'shared/stats' if logged_in? %>
-                <%= render 'follow_form' if logged_in? %>
+            <div class="user-profile-edit">
+                <%if logged_in? %>
+                    <% if current_user?(@user) %>
+                        <%= link_to "プロフィールを編集する", edit_user_path(@user) %>
+                    <% end %>
+                <% end %>
             </div>
         </div>
-
-        <div class="row">
-                <div class="self-introduce-wrapper col-md-12">
-                    <%= @user.self_introduce %>
-                </div>
-        </div>
-        
-        <div class="row row-image-wrapper">
-            <% @posts.each do |post| %>
-                <div class="col-md-4" id="modal-photo">
-                    <%= link_to image_tag(post.photo.url , class: "row-image"), post %>
-                </div>
-                
-            <% end %>
+        <div class="follow_button col-xs-6">
+            <div class="posts-count" >
+                <%= "#{@posts.count}件の投稿" %>
+            </div>
+            <%= render 'shared/stats' %>
+            <%= render 'follow_form' if logged_in? %>
         </div>
     </div>
+    <div class="row">
+        <div class="self-introduce-wrapper col-md-12">
+            <%= @user.self_introduce %>
+        </div>
+    </div>
+    <div class="row row-image-wrapper">
+        <% @posts.each do |post| %>
+            <div class="col-md-4" id="modal-photo">
+                <%= link_to image_tag(post.photo.url , class: "row-image"), post %>
+            </div>
+        <% end %>
+    </div>
+</div>
 
 
 
